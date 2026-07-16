@@ -3,3 +3,5 @@ app-misc/fastfetch
 dev-vcs/git
 sys-process/btop
 app-misc/tmux
+games-fps/crispy-doom
+games-engines/uzdoom
