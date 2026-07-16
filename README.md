@@ -12,6 +12,7 @@ symlinks are re-pointed automatically).
 ## Packages
 
 `desktop` — declarative package manifest (Portage set).
+`package.use/` — declared USE flags, linked into /etc/portage/package.use.
 
 ### Search
 
@@ -51,6 +52,41 @@ Delete the line from `desktop`, then:
     sudo emerge --ask --depclean
 
 depclean removes the package and its orphaned deps.
+
+## USE flags
+
+`package.use/<name>` — one file per intent, linked to
+/etc/portage/package.use/<name> by install.sh.
+
+A flag belongs here when it states what the setup *is* on any
+machine ("DOOM runs X-free via KMS/DRM"). It stays on the
+machine when it describes the hardware — VIDEO_CARDS, CPU_FLAGS,
+make.conf never enter the repo.
+
+Verify flag names against the current ebuild before declaring:
+
+    equery uses media-libs/libsdl2
+
+## Assets
+
+`assets` — content Portage cannot ship (WADs, mods). Packages
+come from Portage only; its Manifest already verifies those.
+
+    sha256 | dest relative to $HOME | mirror URLs, primary first
+
+`assets.sh` fetches it, and install.sh calls it. The hash is the
+truth: a file that does not match is discarded and the next
+mirror is tried. Present + hash ok means no network at all, so
+re-runs are free. Downloads land in `.part` and are renamed only
+once verified — an interrupted run leaves nothing half-written.
+A fetch that fails everywhere warns loudly and installs nothing;
+it never aborts install.sh.
+
+To add an asset, download it by hand, `sha256sum` it, and add
+the line. Never pin a hash you have not computed from the file
+yourself — a wrong hash rejects the right file forever.
+
+    ./tests/test-assets.sh
 
 ## Boundaries
 

@@ -1,0 +1,33 @@
+# Content Portage cannot ship. Engines come from Portage only — its own
+# Manifest verification already covers them.
+#
+# Format, one entry per line:
+#
+#   sha256 | dest relative to $HOME | mirror URLs, primary first
+#
+# The hash is the truth: a file that does not match it is discarded, and
+# the next mirror is tried. Fetched by assets.sh, called from install.sh.
+
+# DOOM shareware, v1.9 — the final revision, unchanged since 1995.
+# Cross-checked: this file's md5 is f0cefca49926d00903cf57551d901abe, the
+# v1.9 revision documented at doomwiki.org/wiki/DOOM1.WAD, and both mirrors
+# below serve byte-identical copies (4196020 bytes).
+# Not the idgames archive: idgames ships doom19s.zip (a zip of LHA-packed
+# installer chunks), and this mechanism fetches plain files — no unpacking.
+1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771 | .local/share/games/doom/doom1.wad | https://distro.ibiblio.org/pub/linux/distributions/slitaz/sources/packages/d/doom1.wad https://github.com/Akbar30Bill/DOOM_wads/raw/master/doom1.wad
+
+# Brutal Doom — NOT PINNED YET, needs a hash from you.
+#
+# The author's canonical release is ModDB, which serves its downloads from
+# behind a bot wall: it cannot be fetched non-interactively, so the hash
+# could not be verified from here. There is no SgtMarkIV/BrutalDoom GitHub
+# repo to fall back on. Pinning a hash copied from memory or from a random
+# third-party mirror would be worse than leaving this out: hash-as-truth
+# means a wrong hash rejects the *right* file forever, and an unofficial
+# mirror pinned by hash is a supply chain you did not choose.
+#
+# To pin it, download the pk3 from ModDB by hand, then:
+#     sha256sum brutalv22.pk3
+# and uncomment this line with that hash filled in:
+#
+# <sha256> | .local/share/games/doom/brutalv22.pk3 | <url>

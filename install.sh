@@ -7,6 +7,10 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 sudo mkdir -p /etc/portage/sets
 sudo ln -sfn "$REPO/desktop" /etc/portage/sets/desktop
 
+# --- declared USE flags -> portage config ---
+sudo mkdir -p /etc/portage/package.use
+sudo ln -sfn "$REPO/package.use/doom" /etc/portage/package.use/doom
+
 # --- packages (noreplace = ставит только недостающее) ---
 sudo emerge --noreplace --verbose @desktop
 
@@ -22,5 +26,8 @@ for pair in "${LINKS[@]}"; do
     ln -sfn "$src" "$dst"
     echo "link: $dst -> $src"
 done
+
+# --- assets portage cannot ship (never fatal) ---
+"$REPO/assets.sh"
 
 echo "done."
