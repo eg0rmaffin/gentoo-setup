@@ -1,0 +1,10 @@
+# DOOM must run X-free, straight through KMS/DRM, on any machine.
+# That is setup philosophy, not hardware config — hence it lives here.
+#
+# kms   — "Build the KMSDRM video driver" (libsdl2 metadata.xml)
+# gles2 — GLES renderer; NOT default-on in either ebuild, must be opted in
+# -gtk  — uzdoom's only X11 vector: gtk? ( x11-libs/gtk+:3 ).
+#         Off by default in the ebuild, but desktop profiles often
+#         enable gtk globally, so deny it explicitly.
+media-libs/libsdl2 kms gles2
+games-engines/uzdoom gles2 -gtk
