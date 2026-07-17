@@ -16,18 +16,11 @@
 # installer chunks), and this mechanism fetches plain files — no unpacking.
 1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771 | .local/share/games/doom/doom1.wad | https://distro.ibiblio.org/pub/linux/distributions/slitaz/sources/packages/d/doom1.wad https://github.com/Akbar30Bill/DOOM_wads/raw/master/doom1.wad
 
-# Brutal Doom — NOT PINNED YET, needs a hash from you.
-#
-# The author's canonical release is ModDB, which serves its downloads from
-# behind a bot wall: it cannot be fetched non-interactively, so the hash
-# could not be verified from here. There is no SgtMarkIV/BrutalDoom GitHub
-# repo to fall back on. Pinning a hash copied from memory or from a random
-# third-party mirror would be worse than leaving this out: hash-as-truth
-# means a wrong hash rejects the *right* file forever, and an unofficial
-# mirror pinned by hash is a supply chain you did not choose.
-#
-# To pin it, download the pk3 from ModDB by hand, then:
-#     sha256sum brutalv22.pk3
-# and uncomment this line with that hash filled in:
-#
-# <sha256> | .local/share/games/doom/brutalv22.pk3 | <url>
+# Brutal Doom Community Expansion v21.50.1 — the mod's living lineage: years
+# of fixes on top of the frozen official v21, released on canonical GitHub
+# Releases (BLOODWOLF333/Brutal-Doom-Community-Expansion), which curl fetches
+# without a bot wall. Not the author's ModDB build: that one is unautomatable.
+# Hash computed here from the downloaded file (120656821 bytes, valid pk3 zip,
+# 16538 entries, no CRC errors); it matches the digest GitHub itself records
+# for the release asset.
+7b74d279799756d826b91d24e71687b9850233c29308e66888e9f0588cd75758 | .local/share/games/doom/brutalv21.50.1.pk3 | https://github.com/BLOODWOLF333/Brutal-Doom-Community-Expansion/releases/download/v21.50.1/brutalv21.50.1.pk3

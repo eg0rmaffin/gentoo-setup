@@ -1,0 +1,9 @@
+# Both DOOM engines are unstable-only in the tree, so the stable-branch
+# default would refuse to emerge them at all.
+#
+# Bare atoms, deliberately: an entry with no keyword accepts the unstable
+# branch of whatever arch the machine runs. Writing ~amd64 here would pin
+# the file to one architecture — the same reason VIDEO_CARDS never enters
+# the repo.
+games-fps/crispy-doom
+games-engines/uzdoom

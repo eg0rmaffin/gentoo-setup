@@ -13,6 +13,8 @@ symlinks are re-pointed automatically).
 
 `desktop` — declarative package manifest (Portage set).
 `package.use/` — declared USE flags, linked into /etc/portage/package.use.
+`package.accept_keywords/` — declared keywords, linked into
+/etc/portage/package.accept_keywords.
 
 ### Search
 
@@ -66,6 +68,15 @@ make.conf never enter the repo.
 Verify flag names against the current ebuild before declaring:
 
     equery uses media-libs/libsdl2
+
+## Keywords
+
+`package.accept_keywords/<name>` — same shape as package.use:
+one file per intent, linked by install.sh.
+
+Write bare atoms, without `~amd64`. An entry with no keyword
+accepts the unstable branch of whatever arch the machine runs,
+which keeps the file machine-agnostic.
 
 ## Assets
 
