@@ -7,3 +7,6 @@
 # the repo.
 games-fps/crispy-doom
 games-engines/uzdoom
+# uzdoom's own dep (>=media-libs/zmusic-1.1.14), unstable too: without it
+# the emerge fails on the dependency rather than on the engine.
+media-libs/zmusic
